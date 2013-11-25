@@ -27,7 +27,8 @@ gem 'jbuilder', '~> 1.2'
 gem 'unicorn'
 
 group :development do
- gem 'guard-rspec', require: false
+  gem 'guard-rspec', require: false
+  gem 'capybara'
 end
 
 group :development, :test do
