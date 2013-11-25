@@ -26,6 +26,10 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'unicorn'
 
+group :development do
+ gem 'guard-rspec', require: false
+end
+
 group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails'
