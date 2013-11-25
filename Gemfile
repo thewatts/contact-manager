@@ -24,6 +24,8 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+gem 'unicorn'
+
 group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails'
