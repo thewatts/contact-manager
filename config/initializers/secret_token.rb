@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-ContantManager::Application.config.secret_key_base = '6b9aa4138958c2336cae734bd5e074de71999821657580698a3fd5d55dbd499aced4c61a466f24692d8c21b7d8f74753bc089dd4fc73d08c070d38fed81b8c5e'
+ContactManager::Application.config.secret_key_base = '6b9aa4138958c2336cae734bd5e074de71999821657580698a3fd5d55dbd499aced4c61a466f24692d8c21b7d8f74753bc089dd4fc73d08c070d38fed81b8c5e'

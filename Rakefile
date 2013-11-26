@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-ContantManager::Application.load_tasks
+ContactManager::Application.load_tasks
