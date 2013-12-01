@@ -10,17 +10,31 @@
   <%= @person.last_name %>
 </p>
 
-<ul>
-  <% @person.phone_numbers.each do |phone| %>
-    <li>
-      <%= phone.number %> | <%= link_to 'edit', edit_phone_number_path(phone) %>
-                          | <%= link_to 'delete', phone_number_path(phone),
-                          method: :delete, data: { confirm: "Sure?" } %>
-    </li>
-  <% end %>
-</ul>
+<div class="phone-numbers">
+  <ul>
+    <% @person.phone_numbers.each do |phone| %>
+      <li>
+        <%= phone.number %> | <%= link_to 'edit', edit_phone_number_path(phone) %>
+                            | <%= link_to 'delete', phone_number_path(phone),
+                            method: :delete, data: { confirm: "Sure?" } %>
+      </li>
+    <% end %>
+  </ul>
+  <%= link_to 'Add phone number', new_phone_number_path(person_id: @person.id) %> |
+</div>
 
-<%= link_to 'Add phone number', new_phone_number_path(person_id: @person.id) %> |
+<div class="email-addresses">
+  <ul>
+    <% @person.email_addresses.each do |email| %>
+      <li>
+        <%= email.address %> | <%#= link_to 'edit', edit_phone_number_path(phone) %>
+                             | <%#= link_to 'delete', phone_number_path(phone),
+                             method: :delete, data: { confirm: "Sure?" } %>
+      </li>
+    <% end %>
+  </ul>
+  <%#= link_to 'Add email address', new_phone_number_path(person_id: @person.id) %> |
+</div>
 
 <%= link_to 'Edit', edit_person_path(@person) %> |
 <%= link_to 'Back', people_path %>
