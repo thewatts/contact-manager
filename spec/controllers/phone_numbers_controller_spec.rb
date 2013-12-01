@@ -105,6 +105,8 @@ describe PhoneNumbersController do
 
   describe "PUT update" do
     describe "with valid params" do
+      let(:bob) {Person.create(first_name: "Bob", last_name: "Jones")}
+      let(:valid_attributes) { {number: '555-5678', person_id: bob.id} }
       it "updates the requested phone_number" do
         phone_number = PhoneNumber.create! valid_attributes
         # Assuming there are no other phone_numbers in the database, this
@@ -124,7 +126,7 @@ describe PhoneNumbersController do
       it "redirects to the phone_number" do
         phone_number = PhoneNumber.create! valid_attributes
         put :update, {:id => phone_number.to_param, :phone_number => valid_attributes}, valid_session
-        response.should redirect_to(phone_number)
+        response.should redirect_to(bob)
       end
     end
 
