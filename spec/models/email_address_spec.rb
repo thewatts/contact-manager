@@ -13,4 +13,9 @@ describe EmailAddress do
     expect(email_address).to_not be_valid
   end
 
+  it 'should have a person' do
+    email_address.person_id = nil
+    expect(email_address).to_not be_valid
+  end
+
 end
