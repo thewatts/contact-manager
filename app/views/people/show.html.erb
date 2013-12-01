@@ -27,7 +27,7 @@
   <ul>
     <% @person.email_addresses.each do |email| %>
       <li>
-        <%= email.address %> | <%#= link_to 'edit', edit_phone_number_path(phone) %>
+        <%= email.address %> | <%= link_to 'edit', edit_email_address_path(email) %>
                              | <%#= link_to 'delete', phone_number_path(phone),
                              method: :delete, data: { confirm: "Sure?" } %>
       </li>
