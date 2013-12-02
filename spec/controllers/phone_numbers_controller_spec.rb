@@ -23,7 +23,8 @@ describe PhoneNumbersController do
   # This should return the minimal set of attributes required to create a valid
   # PhoneNumber. As you add validations to PhoneNumber, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "number" => "MyString", "person_id" => 1 } }
+  let(:valid_attributes) { { "number" => "MyString", "contact_id" => 1,
+                             "contact_type" => "Person" } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -65,7 +66,8 @@ describe PhoneNumbersController do
     describe "with valid params" do
 
       let(:alice) { Person.create(first_name: "Alice", last_name: "Smith") }
-      let(:valid_attributes) { {number: '555-1212', person_id: alice.id} }
+      let(:valid_attributes) { {number: '555-1212', contact_id: alice.id,
+                                type: "Person"} }
       it "creates a new PhoneNumber" do
         expect {
           post :create, {:phone_number => valid_attributes}, valid_session
@@ -80,7 +82,6 @@ describe PhoneNumbersController do
 
       it "redirects to the phone number's person" do
         alice = Person.create(first_name: "Alice", last_name: "Smith")
-        valid_attributes = { number: "555-8888", person_id: alice.id }
         post :create, {:phone_number => valid_attributes}, valid_session
         expect(response).to redirect_to(alice)
       end
@@ -106,7 +107,8 @@ describe PhoneNumbersController do
   describe "PUT update" do
     describe "with valid params" do
       let(:bob) {Person.create(first_name: "Bob", last_name: "Jones")}
-      let(:valid_attributes) { {number: '555-5678', person_id: bob.id} }
+      let(:valid_attributes) { {number: '555-5678', contact_id: bob.id, 
+                                contact_type: "Person"} }
       it "updates the requested phone_number" do
         phone_number = PhoneNumber.create! valid_attributes
         # Assuming there are no other phone_numbers in the database, this
@@ -151,7 +153,8 @@ describe PhoneNumbersController do
 
   describe "DELETE destroy" do
     let(:bob) {Person.create(first_name: "Bob", last_name: "Jones")}
-    let(:valid_attributes) { {number: '555-5678', person_id: bob.id} }
+    let(:valid_attributes) { {number: '555-5678', contact_id: bob.id, 
+                              contact_type: "Person"} }
     it "destroys the requested phone_number" do
       phone_number = PhoneNumber.create! valid_attributes
       expect {
