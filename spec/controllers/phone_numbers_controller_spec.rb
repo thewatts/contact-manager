@@ -67,7 +67,7 @@ describe PhoneNumbersController do
 
       let(:alice) { Person.create(first_name: "Alice", last_name: "Smith") }
       let(:valid_attributes) { {number: '555-1212', contact_id: alice.id,
-                                type: "Person"} }
+                                contact_type: "Person"} }
       it "creates a new PhoneNumber" do
         expect {
           post :create, {:phone_number => valid_attributes}, valid_session
@@ -81,7 +81,6 @@ describe PhoneNumbersController do
       end
 
       it "redirects to the phone number's person" do
-        alice = Person.create(first_name: "Alice", last_name: "Smith")
         post :create, {:phone_number => valid_attributes}, valid_session
         expect(response).to redirect_to(alice)
       end
@@ -107,7 +106,7 @@ describe PhoneNumbersController do
   describe "PUT update" do
     describe "with valid params" do
       let(:bob) {Person.create(first_name: "Bob", last_name: "Jones")}
-      let(:valid_attributes) { {number: '555-5678', contact_id: bob.id, 
+      let(:valid_attributes) { {number: '555-5678', contact_id: bob.id,
                                 contact_type: "Person"} }
       it "updates the requested phone_number" do
         phone_number = PhoneNumber.create! valid_attributes

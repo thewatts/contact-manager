@@ -20,7 +20,8 @@
       </li>
     <% end %>
   </ul>
-  <%= link_to 'Add phone number', new_phone_number_path(person_id: @person.id) %> |
+  <%= link_to 'Add phone number', new_phone_number_path(contact_id: @person.id,
+                                                        contact_type: "Person") %> |
 </div>
 
 <div class="email-addresses">

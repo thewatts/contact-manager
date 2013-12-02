@@ -14,7 +14,8 @@ class PhoneNumbersController < ApplicationController
 
   # GET /phone_numbers/new
   def new
-    @phone_number = PhoneNumber.new(contact_id: params[:contact_id])
+    @phone_number = PhoneNumber.new(contact_id: params[:contact_id],
+                                    contact_type: params[:contact_type])
   end
 
   # GET /phone_numbers/1/edit
@@ -69,6 +70,6 @@ class PhoneNumbersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def phone_number_params
-      params.require(:phone_number).permit(:number, :contact_id, :type)
+      params.require(:phone_number).permit(:number, :contact_id, :contact_type)
     end
 end
