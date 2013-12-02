@@ -1,5 +1,5 @@
 class CompaniesController < ApplicationController
-  before_action :set_company, only: [:show, :edit, :update, :destroy]
+  before_action :find_resource, only: [:show, :edit, :update, :destroy]
 
   # GET /companies
   # GET /companies.json
