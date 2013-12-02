@@ -62,26 +62,23 @@ describe 'the company view', type: :feature do
 
   describe "email_addresses" do
     before(:each) do
-      pending
       company.email_addresses.create(address: "bob@example.com")
       company.email_addresses.create(address: "robert@example.com")
       visit company_path(company)
     end
 
     it "shows email addresses" do
-      pending
       email_address = company.email_addresses.first
       expect(page).to have_selector('li', text: email_address.address)
     end
 
     it 'has a link to add a new email address' do
-      pending
       expect(page).to have_link('Add email address',
-                      href: new_email_address_path(company_id: company.id))
+                      href: new_email_address_path(contact_id: company.id,
+                                                  contact_type: "Company"))
     end
 
     it "creates an email address" do
-      pending
       page.click_link('Add email address')
       page.fill_in 'Address', with: 'bob2@example.com'
       page.click_button('Create Email address')
@@ -90,14 +87,12 @@ describe 'the company view', type: :feature do
     end
 
     it "has links to edit an email address" do
-      pending
       company.email_addresses.each do |email|
         expect(page).to have_link('edit', href: edit_email_address_path(email))
       end
     end
 
     it 'edits an email address' do
-      pending
       email = company.email_addresses.first
       old_email = email.address
 
@@ -112,7 +107,6 @@ describe 'the company view', type: :feature do
     end
 
     it 'deletes an email address' do
-      pending
       email = company.email_addresses.first
       within('.email-addresses') do
         first(:link, 'delete').click
